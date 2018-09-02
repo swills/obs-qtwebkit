@@ -1,16 +1,16 @@
 ifndef OBS_INCLUDE
-OBS_INCLUDE = /usr/include/obs
+OBS_INCLUDE = /usr/include
 endif
 ifndef OBS_LIB
 OBS_LIB = /usr/lib
 endif
 
-CXXFLAGS = -std=c++11 -Wall -g -fPIC -I$(OBS_INCLUDE) -I./src $(shell pkg-config --cflags Qt5WebKitWidgets)
-CXX      = g++
+CXXFLAGS = -std=c++11 -Wall -g -fPIC -I$(OBS_INCLUDE) -I./src $(shell pkg-config --cflags Qt5Widgets) $(shell pkg-config --cflags Qt5WebKit) $(shell pkg-config --cflags Qt5WebKitWidgets)
+CXX      ?= c++
 RM       = /bin/rm -rf
 LDFLAGS  = -L$(OBS_LIB)
 LDLIBS_LIB   = -lobs -lrt
-LDLIBS_RENDERER   = $(shell pkg-config --libs Qt5WebKitWidgets) -lrt
+LDLIBS_RENDERER   = $(shell pkg-config --libs Qt5Widgets) $(shell pkg-config --libs Qt5WebKit) $(shell pkg-config --libs Qt5WebKitWidgets) -lrt -linotify
 
 LIB = build/qtwebkit-browser.so
 LIB_OBJ = build/qtwebkit-main.o build/qtwebkit-source.o build/qtwebkit-manager.o

@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <unistd.h>
 #include <sys/syscall.h>
 
-#include <obs-module.h>
+#include <obs/obs-module.h>
 #include "qtwebkit-source.hpp"
 
 OBS_DECLARE_MODULE()

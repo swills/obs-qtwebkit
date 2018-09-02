@@ -1,9 +1,7 @@
-This plugin is deprecated and no longer maintained. Please see https://github.com/bazukas/obs-linuxbrowser
-
 # About
 
 This is a browser source plugin for obs-studio (https://github.com/jp9000/obs-studio) based
-on QtWebkit library. This plugin is Linux only.
+on QtWebkit library. This plugin is for Linux and FreeBSD only.
 
 Currently does not support interaction with the web page, but it might be added later.
 
