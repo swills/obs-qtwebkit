@@ -17,9 +17,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <signal.h>
 #include <unistd.h>
-#include <sys/mman.h>
 #include <sys/inotify.h>
+#include <sys/mman.h>
+#ifdef __FreeBSD__
+#include <sys/stat.h>
+#endif
+#ifdef __linux__
 #include <sys/prctl.h>
+#endif
+
 #include <fcntl.h>
 #include <pthread.h>
 
@@ -96,7 +102,9 @@ int main(int argc, char *argv[])
 	sigaction(SIGTERM, &action, NULL);
 
 	// shutdown if parent process dies
+#ifdef __linux__
 	prctl(PR_SET_PDEATHSIG, SIGTERM);
+#endif
 
 	int width = atoi(argv[2]);
 	int height = atoi(argv[3]);

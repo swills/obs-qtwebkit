@@ -17,7 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include <obs-module.h>
+#include <obs/obs-module.h>
+#ifdef __FreeBSD__
+#include <sys/stat.h>
+#endif
 
 struct shared_data {
 	pthread_mutex_t mutex;
