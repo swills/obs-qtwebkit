@@ -1,4 +1,4 @@
-group: travis_lts
+group: travis_latest
 language: cpp
 install: make get-deps
 script: make
