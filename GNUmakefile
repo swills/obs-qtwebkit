@@ -1,3 +1,5 @@
+UNAME := $(shell uname)
+
 ifndef OBS_INCLUDE
 OBS_INCLUDE = /usr/include
 endif
@@ -10,7 +12,10 @@ CXX      ?= c++
 RM       = /bin/rm -rf
 LDFLAGS  = -L$(OBS_LIB)
 LDLIBS_LIB   = -lobs -lrt
-LDLIBS_RENDERER   = $(shell pkg-config --libs Qt5Widgets) $(shell pkg-config --libs Qt5WebKit) $(shell pkg-config --libs Qt5WebKitWidgets) -lrt -linotify
+LDLIBS_RENDERER   = $(shell pkg-config --libs Qt5Widgets) $(shell pkg-config --libs Qt5WebKit) $(shell pkg-config --libs Qt5WebKitWidgets) -lrt
+ifeq ($(UNAME), FreeBSD)
+LDLIBS_RENDERER  += -linotify
+endif
 
 LIB = build/qtwebkit-browser.so
 LIB_OBJ = build/qtwebkit-main.o build/qtwebkit-source.o build/qtwebkit-manager.o
