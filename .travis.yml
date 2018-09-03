@@ -1,2 +1,3 @@
 language: cpp
-script: echo Build successful
+install: gmake get-deps
+script: gmake

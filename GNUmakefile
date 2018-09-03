@@ -57,3 +57,7 @@ build/%.o: src/%.cpp
 .PHONY: clean
 clean:
 	$(RM) $(LIB_OBJ) $(LIB) $(RENDERER_OBJ) $(RENDERER) $(PLUGIN_BUILD_DIR)
+
+.PHONY: get-deps
+get-deps:
+	echo qtbase5-dev libqt5webkit5-dev
