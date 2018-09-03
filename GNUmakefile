@@ -1,10 +1,18 @@
 UNAME := $(shell uname)
 
 ifndef OBS_INCLUDE
+ifeq ($(UNAME), FreeBSD)
+OBS_INCLUDE = /usr/local/include
+else
 OBS_INCLUDE = /usr/include
 endif
+endif
 ifndef OBS_LIB
+ifeq ($(UNAME), FreeBSD)
+OBS_LIB = /usr/local/lib
+else
 OBS_LIB = /usr/lib
+endif
 endif
 
 CXXFLAGS = -std=c++11 -Wall -g -fPIC -I$(OBS_INCLUDE) -I./src $(shell pkg-config --cflags Qt5Widgets) $(shell pkg-config --cflags Qt5WebKit) $(shell pkg-config --cflags Qt5WebKitWidgets)
