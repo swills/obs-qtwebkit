@@ -1,3 +1,4 @@
+group: travis_lts
 language: cpp
 install: make get-deps
 script: make
